@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="SkladtradeEntity.Models" assembly="SkladtradeEntity">
+  <class name="Product"  >
+    <id name="ID" unsaved-value="0">
+      <column name="ID" not-null="true" />
+      <generator class="identity" />
+    </id>
+    
+    <property name="created_at" update="false"/>
+    <property name="updated_at" />
+
+    <property name="Code"/>
+    <property name="Description"  type="string" length="10000"/>
+    <property name="Price"/>
+    <property name="Balance"/>
+
+    <many-to-one name="Category" not-null="true" column="Category_ID"/>
+    <many-to-one name="Manufacturer" not-null="true" column="Manufactuer_ID"/>
+
+    <set name="Characteristics" table="CharacteristicsProducts" generic="true"  lazy="false">
+      <key>
+        <column name="Product_ID" not-null="true" sql-type="INTEGER" />
+      </key>
+      <many-to-many class="Characteristic" fetch="join">
+        <column name="Characteristic_ID" not-null="true" sql-type="INTEGER" />
+      </many-to-many>
+    </set>
+    
+  </class>
+</hibernate-mapping>

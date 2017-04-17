@@ -1,6 +1,6 @@
 ﻿namespace Skladtrade
 {
-    partial class Main
+    partial class FormProduct
     {
         /// <summary>
         /// Required designer variable.
@@ -28,34 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonProducts = new System.Windows.Forms.Button();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
-            // buttonProducts
+            // listView1
             // 
-            this.buttonProducts.Location = new System.Drawing.Point(47, 60);
-            this.buttonProducts.Name = "buttonProducts";
-            this.buttonProducts.Size = new System.Drawing.Size(75, 23);
-            this.buttonProducts.TabIndex = 0;
-            this.buttonProducts.Text = "Продукция";
-            this.buttonProducts.UseVisualStyleBackColor = true;
-            this.buttonProducts.Click += new System.EventHandler(this.buttonProducts_Click);
+            this.listView1.Location = new System.Drawing.Point(12, 12);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(260, 238);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.List;
             // 
-            // Main
+            // FormProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(553, 317);
-            this.Controls.Add(this.buttonProducts);
-            this.Name = "Main";
-            this.Text = "Торгово-закупочные операции";
+            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.listView1);
+            this.Name = "FormProduct";
+            this.Text = "Продукция";
+            this.Load += new System.EventHandler(this.FormProduct_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button buttonProducts;
+        private System.Windows.Forms.ListView listView1;
     }
 }
-

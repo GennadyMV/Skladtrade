@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="SkladtradeEntity.Models" assembly="SkladtradeEntity">
+  <class name="Order"  >
+    <id name="ID" unsaved-value="0">
+      <column name="ID" not-null="true" />
+      <generator class="identity" />
+    </id>
+    
+    <property name="created_at" update="false"/>
+    <property name="updated_at" />
+
+    <property name="Number"/>
+    <property name="Document"/>
+    
+    <many-to-one name="OrderStatus" not-null="true" column="OrderStatus_ID"/>
+    <many-to-one name="Manufacturer" not-null="true" column="Manufactuer_ID"/>
+
+    <set name="OrderProducts" cascade="all" >
+      <key column="Order_ID"/>
+      <one-to-many class="OrderProduct"/>
+    </set>
+   
+    
+  </class>
+</hibernate-mapping>

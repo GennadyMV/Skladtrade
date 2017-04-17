@@ -16,5 +16,11 @@ namespace Skladtrade
         {
             InitializeComponent();
         }
+
+        private void buttonProducts_Click(object sender, EventArgs e)
+        {
+            FormProduct theFormProduct = new FormProduct();
+            theFormProduct.ShowDialog();
+        }
     }
 }
