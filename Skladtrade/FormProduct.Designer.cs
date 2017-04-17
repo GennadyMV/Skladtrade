@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listViewProduct = new System.Windows.Forms.ListView();
             this.buttonProductAdd = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // listView1
+            // listViewProduct
             // 
-            this.listView1.Location = new System.Drawing.Point(12, 47);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(487, 285);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.List;
+            this.listViewProduct.Location = new System.Drawing.Point(12, 47);
+            this.listViewProduct.Name = "listViewProduct";
+            this.listViewProduct.Size = new System.Drawing.Size(487, 285);
+            this.listViewProduct.TabIndex = 0;
+            this.listViewProduct.UseCompatibleStateImageBehavior = false;
+            this.listViewProduct.View = System.Windows.Forms.View.List;
             // 
             // buttonProductAdd
             // 
@@ -57,7 +57,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(511, 344);
             this.Controls.Add(this.buttonProductAdd);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.listViewProduct);
             this.Name = "FormProduct";
             this.Text = "Продукция";
             this.Load += new System.EventHandler(this.FormProduct_Load);
@@ -67,7 +67,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listViewProduct;
         private System.Windows.Forms.Button buttonProductAdd;
     }
 }

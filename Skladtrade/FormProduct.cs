@@ -27,10 +27,11 @@ namespace Skladtrade
         {
             try
             {
-                foreach (var product in Product.GetAll())
+                foreach(var product in Product.GetAll()) 
                 {
-
+                    this.listViewProduct.Items.Add(product.Name);
                 }
+                
             }
             catch
             {
@@ -42,6 +43,7 @@ namespace Skladtrade
         {
             FormProductNew theProductNew = new FormProductNew();
             theProductNew.ShowDialog();
+            LoadProduct();
         }
     }
 }

@@ -95,17 +95,19 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Mapping\OrderProduct.hbm.xml">
+    <EmbeddedResource Include="Mapping\OrderProduct.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Mapping\Order.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Order.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Mapping\OrderStatus.hbm.xml">
+    <EmbeddedResource Include="Mapping\OrderStatus.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mapping\Sale.hbm.xml">

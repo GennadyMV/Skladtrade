@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="SkladtradeEntity.Models" assembly="SkladtradeEntity">
-  <class name="Order"  >
+  <class name="Order" table="Zakaz"  >
     <id name="ID" unsaved-value="0">
       <column name="ID" not-null="true" />
       <generator class="identity" />
@@ -13,12 +13,12 @@
     <property name="Document"/>
     
     <many-to-one name="OrderStatus" not-null="true" column="OrderStatus_ID"/>
-    <many-to-one name="Manufacturer" not-null="true" column="Manufactuer_ID"/>
+    <many-to-one name="Manufacturer" not-null="true" column="Manufacturer_ID"/>
 
-    <!--<set name="OrderProducts" cascade="all" >
+    <set name="OrderProducts" cascade="all" >
       <key column="Order_ID"/>
       <one-to-many class="OrderProduct"/>
-    </set>-->
+    </set>
    
     
   </class>

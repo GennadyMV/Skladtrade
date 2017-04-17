@@ -14,8 +14,8 @@
     <property name="Price"/>
     <property name="Balance"/>
 
-    <many-to-one name="Category" not-null="true" column="Category_ID"/>
-    <many-to-one name="Manufacturer" not-null="true" column="Manufactuer_ID"/>
+    <many-to-one name="Category" not-null="true" column="Category_ID" lazy="false"/>
+    <many-to-one name="Manufacturer" not-null="true" column="Manufactuer_ID" lazy="false"/>
 
     <set name="Characteristics" table="CharacteristicsProducts" generic="true"  lazy="false">
       <key>

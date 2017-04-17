@@ -23,6 +23,14 @@ namespace SkladtradeEntity.Models
 
         public virtual int Balance { get; set; }
 
+        public virtual string Name
+        {
+            get
+            {
+                return this.Code + " - " + this.Category.Name +" (" + this.Manufacturer.Name + ")";
+            }
+        }
+
         private ICollection<Characteristic> _Characteristics;
 
         public Product()

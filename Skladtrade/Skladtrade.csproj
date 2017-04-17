@@ -72,6 +72,12 @@
     <Compile Include="FormCategoryNew.Designer.cs">
       <DependentUpon>FormCategoryNew.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormManufacturerNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormManufacturerNew.Designer.cs">
+      <DependentUpon>FormManufacturerNew.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormProduct.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormCategoryNew.resx">
       <DependentUpon>FormCategoryNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormManufacturerNew.resx">
+      <DependentUpon>FormManufacturerNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormProduct.resx">
       <DependentUpon>FormProduct.cs</DependentUpon>
