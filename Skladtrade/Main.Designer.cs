@@ -49,6 +49,7 @@
             this.Controls.Add(this.buttonProducts);
             this.Name = "Main";
             this.Text = "Торгово-закупочные операции";
+            this.Load += new System.EventHandler(this.Main_Load);
             this.ResumeLayout(false);
 
         }

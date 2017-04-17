@@ -23,7 +23,7 @@ namespace SkladtradeEntity.Models
 
         public virtual int Balance { get; set; }
 
-        public ICollection<Characteristic> _Characteristics;
+        private ICollection<Characteristic> _Characteristics;
 
         public Product()
         {

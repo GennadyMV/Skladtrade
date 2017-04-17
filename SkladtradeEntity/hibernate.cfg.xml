@@ -5,7 +5,6 @@
                                 BinaryGUID=false;New=false;Compress=true;Version=3</property>
     <property name="connection.driver_class">NHibernate.Driver.SQLite20Driver</property>
     <property name="dialect">NHibernate.Dialect.SQLiteDialect</property>
-    <property name='proxyfactory.factory_class'>NHibernate.ByteCode.LinFu.ProxyFactoryFactory, NHibernate.ByteCode.LinFu</property>
     <property name="query.substitutions">true=1;false=0</property>
     <property name="show_sql">false</property>
   </session-factory>

@@ -15,10 +15,10 @@
     <many-to-one name="OrderStatus" not-null="true" column="OrderStatus_ID"/>
     <many-to-one name="Manufacturer" not-null="true" column="Manufactuer_ID"/>
 
-    <set name="OrderProducts" cascade="all" >
+    <!--<set name="OrderProducts" cascade="all" >
       <key column="Order_ID"/>
       <one-to-many class="OrderProduct"/>
-    </set>
+    </set>-->
    
     
   </class>

@@ -37,5 +37,11 @@ namespace Skladtrade
 
             }
         }
+
+        private void buttonProductAdd_Click(object sender, EventArgs e)
+        {
+            FormProductNew theProductNew = new FormProductNew();
+            theProductNew.ShowDialog();
+        }
     }
 }
