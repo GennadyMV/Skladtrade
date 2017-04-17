@@ -27,15 +27,16 @@ namespace Skladtrade
         {
             try
             {
+                this.listViewProduct.Items.Clear();
                 foreach(var product in Product.GetAll()) 
                 {
                     this.listViewProduct.Items.Add(product.Name);
                 }
                 
             }
-            catch
+            catch(Exception ex)
             {
-
+                this.listViewProduct.Items.Add(ex.Message);
             }
         }
 
