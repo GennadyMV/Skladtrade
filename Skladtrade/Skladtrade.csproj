@@ -78,6 +78,24 @@
     <Compile Include="FormManufacturerNew.Designer.cs">
       <DependentUpon>FormManufacturerNew.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormOrder.Designer.cs">
+      <DependentUpon>FormOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormOrderNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormOrderNew.Designer.cs">
+      <DependentUpon>FormOrderNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormOrderProductNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormOrderProductNew.Designer.cs">
+      <DependentUpon>FormOrderProductNew.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormProduct.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +107,24 @@
     </Compile>
     <Compile Include="FormProductNew.Designer.cs">
       <DependentUpon>FormProductNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSale.Designer.cs">
+      <DependentUpon>FormSale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSaleNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSaleNew.Designer.cs">
+      <DependentUpon>FormSaleNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSearch.Designer.cs">
+      <DependentUpon>FormSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -104,11 +140,29 @@
     <EmbeddedResource Include="FormManufacturerNew.resx">
       <DependentUpon>FormManufacturerNew.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormOrder.resx">
+      <DependentUpon>FormOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormOrderNew.resx">
+      <DependentUpon>FormOrderNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormOrderProductNew.resx">
+      <DependentUpon>FormOrderProductNew.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormProduct.resx">
       <DependentUpon>FormProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormProductNew.resx">
       <DependentUpon>FormProductNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSale.resx">
+      <DependentUpon>FormSale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSaleNew.resx">
+      <DependentUpon>FormSaleNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSearch.resx">
+      <DependentUpon>FormSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>

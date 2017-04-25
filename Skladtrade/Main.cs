@@ -31,5 +31,23 @@ namespace Skladtrade
                 Entity.Common.NHibernateHelper.UpdateSchema();
             }
         }
+
+        private void buttonOrders_Click(object sender, EventArgs e)
+        {
+            FormOrder theFormOrder = new FormOrder();
+            theFormOrder.ShowDialog();
+        }
+
+        private void buttonSales_Click(object sender, EventArgs e)
+        {
+            FormSale theFormSale = new FormSale();
+            theFormSale.ShowDialog();
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            FormSearch theSearch = new FormSearch();
+            theSearch.ShowDialog();
+        }
     }
 }

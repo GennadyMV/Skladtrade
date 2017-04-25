@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SkladtradeEntity.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,8 +11,51 @@ namespace SkladtradeConsole
     {
         static void Main(string[] args)
         {
-            UpdateSchema();
+            //UpdateSchema();
+          //  SaveOrderStatus();
+            ShowOrderStatus();
             Console.ReadKey();
+        }
+        static void ShowOrderStatus()
+        {
+            foreach (var item in OrderStatus.GetAll())
+            {
+                Console.WriteLine(item.Name);
+            }
+        }
+        static void SaveOrderStatus()
+        {
+            OrderStatus model = new OrderStatus();
+            model.Name = "Новый заказ";
+            model.Save();
+
+            OrderStatus model1 = new OrderStatus();
+            model1.Name = "Черновик";
+            model1.Save();
+
+            OrderStatus model2 = new OrderStatus();
+            model2.Name = "Отправлен";
+            model2.Save();
+
+            OrderStatus model3 = new OrderStatus();
+            model3.Name = "Оплачен";
+            model3.Save();
+
+            OrderStatus model4 = new OrderStatus();
+            model4.Name = "Получен";
+            model4.Save();
+
+            OrderStatus model5 = new OrderStatus();
+            model5.Name = "Отказано";
+            model5.Save();
+
+            OrderStatus model6 = new OrderStatus();
+            model6.Name = "Отменен";
+            model6.Save();
+
+            OrderStatus model7 = new OrderStatus();
+            model7.Name = "Закрыт";
+            model7.Save();
         }
         static void UpdateSchema()
         {
