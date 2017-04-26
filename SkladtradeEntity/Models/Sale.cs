@@ -23,6 +23,14 @@ namespace SkladtradeEntity.Models
         public virtual int Count { get; set; }
 
         public virtual Product Product { get; set; }
+
+        public virtual String Name
+        {
+            get
+            {
+                return this.created_at.ToString() + " Продажа № " + this.ID.ToString("0000") + " # " + this.Number + " на сумму: " + this.Price + " руб.";
+            }
+        }
         public Sale()
         {
         

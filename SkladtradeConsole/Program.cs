@@ -1,9 +1,20 @@
-﻿using SkladtradeEntity.Models;
+﻿using Google.Apis.Auth.OAuth2;
+using Google.Apis.Drive.v3;
+using Google.Apis.Services;
+using Google.Apis.Util.Store;
+using SkladtradeEntity.Models;
 using System;
 using System.Collections.Generic;
+
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+
+
+using Google.Apis.Drive.v3.Data;
+using System.IO;
+
 
 namespace SkladtradeConsole
 {
@@ -13,8 +24,97 @@ namespace SkladtradeConsole
         {
             //UpdateSchema();
           //  SaveOrderStatus();
-            ShowOrderStatus();
+            //ShowOrderStatus();
+            SupportGoogleDrive();
             Console.ReadKey();
+        }
+
+        private static string GetMimeType(string fileName)
+{
+    string mimeType = "application/unknown";
+    string ext = System.IO.Path.GetExtension(fileName).ToLower();
+    Microsoft.Win32.RegistryKey regKey = Microsoft.Win32.Registry.ClassesRoot.OpenSubKey(ext);
+    if (regKey != null && regKey.GetValue("Content Type") != null)
+        mimeType = regKey.GetValue("Content Type").ToString();
+    return mimeType;
+}
+      
+
+
+        static void SupportGoogleDrive()
+        {
+            try
+            {
+                 string[] Scopes = {  DriveService.Scope.DriveReadonly };
+                 string ApplicationName = "Drive API .NET Quickstart";
+
+                 UserCredential credential;
+
+                 using (var stream =
+                     new FileStream("client_id.json", FileMode.Open, FileAccess.Read))
+                 {
+                     string credPath = System.Environment.GetFolderPath(
+                         System.Environment.SpecialFolder.Personal);
+                     credPath = Path.Combine(credPath, ".credentials/drive-dotnet-quickstart.json");
+
+                     credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
+                         GoogleClientSecrets.Load(stream).Secrets,
+                         Scopes,
+                         "user",
+                         CancellationToken.None,
+                         new FileDataStore(credPath, true)).Result;
+                     Console.WriteLine("Credential file saved to: " + credPath);
+                 }
+
+                 // Create Drive API service.
+                 var service = new DriveService(new BaseClientService.Initializer()
+                 {
+                     HttpClientInitializer = credential,
+                     ApplicationName = ApplicationName,
+                 });
+
+                
+                Google.Apis.Drive.v3.Data.File file1 = new Google.Apis.Drive.v3.Data.File();
+                file1.Name = "nhlite.db";
+                file1.Description = "Test";
+                file1.MimeType = "text/plain";
+
+                byte[] byteArray = System.IO.File.ReadAllBytes("nhlite.db");
+                System.IO.MemoryStream stream1 = new System.IO.MemoryStream(byteArray);
+
+                FilesResource.CreateMediaUpload request = service.Files.Create(file1, stream1, "text/plain");
+                request.Upload();
+
+                
+                 // Define parameters of request.
+                 FilesResource.ListRequest listRequest = service.Files.List();
+                 listRequest.PageSize = 10;
+                 listRequest.Fields = "nextPageToken, files(id, name)";
+
+                 // List files.
+                 IList<Google.Apis.Drive.v3.Data.File> files = listRequest.Execute()
+                     .Files;
+                 Console.WriteLine("Files:");
+                 if (files != null && files.Count > 0)
+                 {
+                     foreach (var file in files)
+                     {
+                         Console.WriteLine("{0} ({1})", file.Name, file.Id);
+                     }
+                 }
+                 else
+                 {
+                     Console.WriteLine("No files found.");
+                 }
+                 Console.Read();
+
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
         static void ShowOrderStatus()
         {

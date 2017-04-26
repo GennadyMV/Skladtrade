@@ -34,21 +34,59 @@ namespace Skladtrade
         {
             LoadOrders();
         }
+
+       
+
         private void LoadOrders()
         {
             try
             {
-                this.listBoxOrders.Items.Clear();
-                foreach (var order in Order.GetAll())
-                {
-                    this.listBoxOrders.Items.Add("Заказ № " + order.Number + " ");
-                }
-
+                this.listBoxOrders.DisplayMember = "Name";
+                this.listBoxOrders.ValueMember = "ID";
+                this.listBoxOrders.DataSource = Order.GetAll();
             }
             catch (Exception ex)
             {
+                this.listBoxOrders.DataSource = null;
                 this.listBoxOrders.Items.Add(ex.Message);
             }
+
+        }
+
+        private void ChangeOrderStatus(int Status) 
+        {
+            try
+            {
+                Order theOrder = this.listBoxOrders.SelectedItem as Order;
+                if (theOrder == null)
+                {
+                    return;
+                }
+                theOrder.OrderStatus = OrderStatus.GetByID(Status);
+                theOrder.Update();
+                LoadOrders();
+            }
+            catch (Exception ex)
+            {
+                this.listBoxOrders.DataSource = null;
+                this.listBoxOrders.Items.Add(ex.Message);
+            }
+
+        }
+        private void buttonOrderDelivery_Click(object sender, EventArgs e)
+        {
+            ChangeOrderStatus(5);
+        }
+
+        private void buttonOrderClose_Click(object sender, EventArgs e)
+        {
+            ChangeOrderStatus(8);
+        }
+
+        private void buttonStore_Click(object sender, EventArgs e)
+        {
+            FormStore theStore = new FormStore();
+            theStore.ShowDialog();
         }
     }
 }

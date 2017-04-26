@@ -19,6 +19,14 @@ namespace SkladtradeEntity.Models
 
         public virtual OrderStatus OrderStatus { get; set; }
 
+        public virtual string Name
+        {
+            get
+            {
+                return "Заказ № " + this.ID.ToString("0000") + " # " + this.Number + " " + "на сумму: " + this.OrderProducts.Sum(x=>x.Product.Price) + " руб. Статус: " + this.OrderStatus.Name;
+            }
+        }
+
         private ICollection<OrderProduct> _OrderProducts;
         public virtual ICollection<OrderProduct> OrderProducts
         {

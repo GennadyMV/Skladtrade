@@ -13,9 +13,11 @@ namespace Skladtrade
 {
     public partial class FormProductNew : Form
     {
-        public FormProductNew()
+        Product theProduct;
+        public FormProductNew(Product theProduct)
         {
             InitializeComponent();
+            this.theProduct = theProduct;
         }
 
         private void buttonCategoryAdd_Click(object sender, EventArgs e)
@@ -29,6 +31,14 @@ namespace Skladtrade
         {
             LoadCategory();
             LoadManufacturer();
+
+            if (theProduct.ID > 0)
+            {
+                this.textBoxCode.Text = theProduct.Code;                
+                this.textBoxPrice.Text = theProduct.Price.ToString();
+                this.textBoxDescription.Text = theProduct.Description;
+                //this.comboBoxCategory.SelectedValue = theProduct.Category;
+            }
         }
 
         private void LoadCategory()
@@ -50,6 +60,7 @@ namespace Skladtrade
         {
             try
             {
+
                 this.comboBoxManufacturer.DisplayMember = "Name";
                 this.comboBoxManufacturer.ValueMember = "ID";
                 this.comboBoxManufacturer.DataSource = Manufacturer.GetAll();
@@ -72,13 +83,22 @@ namespace Skladtrade
         {
             try
             {
-                Product theProduct = new Product();
+                
                 theProduct.Code = this.textBoxCode.Text;
                 theProduct.Category = this.comboBoxCategory.SelectedItem as Category;
                 theProduct.Manufacturer = this.comboBoxManufacturer.SelectedItem as Manufacturer;
                 theProduct.Price = Convert.ToDecimal(this.textBoxPrice.Text);
                 theProduct.Description = this.textBoxDescription.Text;
-                theProduct.Save();
+
+                if (theProduct.ID > 0)
+                {
+                    theProduct.Update();
+                }
+                else
+                {
+                    theProduct.Save();
+                }
+
                 this.Close();
             }
             catch(Exception ex)

@@ -73,11 +73,24 @@ namespace Skladtrade
         {
             LoadProduct();
             LoadManufacturer();
+            comboBoxProduct_SelectedIndexChanged(null, null);
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void comboBoxProduct_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Product theProduct = this.comboBoxProduct.SelectedItem as Product;
+            this.numericUpDownPrice.Value = theProduct.Price * this.numericUpDownCount.Value;
+        }
+
+        private void numericUpDownCount_ValueChanged(object sender, EventArgs e)
+        {
+            Product theProduct = this.comboBoxProduct.SelectedItem as Product;
+            this.numericUpDownPrice.Value = theProduct.Price * this.numericUpDownCount.Value;
         }
     }
 }

@@ -27,22 +27,34 @@ namespace Skladtrade
         {
             try
             {
-                this.listViewProduct.Items.Clear();
-                foreach(var product in Product.GetAll()) 
-                {
-                    this.listViewProduct.Items.Add(product.Name);
-                }
+                this.listBoxProducts.DisplayMember = "Name";
+                this.listBoxProducts.ValueMember = "ID";
+                this.listBoxProducts.DataSource = Product.GetAll();
                 
             }
             catch(Exception ex)
             {
-                this.listViewProduct.Items.Add(ex.Message);
+                this.listBoxProducts.DataSource = null;
+                this.listBoxProducts.Items.Add(ex.Message);
             }
         }
 
         private void buttonProductAdd_Click(object sender, EventArgs e)
         {
-            FormProductNew theProductNew = new FormProductNew();
+            Product theProduct = new Product();
+            FormProductNew theProductNew = new FormProductNew(theProduct);
+            theProductNew.ShowDialog();
+            LoadProduct();
+        }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            Product theProduct = listBoxProducts.SelectedItem as Product;
+            if (theProduct == null)
+            {
+                return;
+            }
+            FormProductNew theProductNew = new FormProductNew(theProduct);
             theProductNew.ShowDialog();
             LoadProduct();
         }

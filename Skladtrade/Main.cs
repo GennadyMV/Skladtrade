@@ -49,5 +49,15 @@ namespace Skladtrade
             FormSearch theSearch = new FormSearch();
             theSearch.ShowDialog();
         }
+
+        private void buttonUoload_Click(object sender, EventArgs e)
+        {
+            string _uploadFile = "nsqlite.db";
+            if (System.IO.File.Exists(_uploadFile))
+            {
+               
+            }
+
+        }
     }
 }

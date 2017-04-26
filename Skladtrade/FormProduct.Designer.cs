@@ -28,18 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listViewProduct = new System.Windows.Forms.ListView();
             this.buttonProductAdd = new System.Windows.Forms.Button();
+            this.buttonEdit = new System.Windows.Forms.Button();
+            this.listBoxProducts = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
-            // 
-            // listViewProduct
-            // 
-            this.listViewProduct.Location = new System.Drawing.Point(12, 47);
-            this.listViewProduct.Name = "listViewProduct";
-            this.listViewProduct.Size = new System.Drawing.Size(487, 285);
-            this.listViewProduct.TabIndex = 0;
-            this.listViewProduct.UseCompatibleStateImageBehavior = false;
-            this.listViewProduct.View = System.Windows.Forms.View.List;
             // 
             // buttonProductAdd
             // 
@@ -51,13 +43,32 @@
             this.buttonProductAdd.UseVisualStyleBackColor = true;
             this.buttonProductAdd.Click += new System.EventHandler(this.buttonProductAdd_Click);
             // 
+            // buttonEdit
+            // 
+            this.buttonEdit.Location = new System.Drawing.Point(113, 12);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(75, 23);
+            this.buttonEdit.TabIndex = 2;
+            this.buttonEdit.Text = "Изменить";
+            this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
+            // 
+            // listBoxProducts
+            // 
+            this.listBoxProducts.FormattingEnabled = true;
+            this.listBoxProducts.Location = new System.Drawing.Point(12, 41);
+            this.listBoxProducts.Name = "listBoxProducts";
+            this.listBoxProducts.Size = new System.Drawing.Size(487, 290);
+            this.listBoxProducts.TabIndex = 3;
+            // 
             // FormProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(511, 344);
+            this.Controls.Add(this.listBoxProducts);
+            this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.buttonProductAdd);
-            this.Controls.Add(this.listViewProduct);
             this.Name = "FormProduct";
             this.Text = "Продукция";
             this.Load += new System.EventHandler(this.FormProduct_Load);
@@ -67,7 +78,8 @@
 
         #endregion
 
-        private System.Windows.Forms.ListView listViewProduct;
         private System.Windows.Forms.Button buttonProductAdd;
+        private System.Windows.Forms.Button buttonEdit;
+        private System.Windows.Forms.ListBox listBoxProducts;
     }
 }

@@ -27,7 +27,7 @@ namespace SkladtradeEntity.Models
         {
             get
             {
-                return this.Code + " - " + this.Category.Name +" (" + this.Manufacturer.Name + ")";
+                return this.Code + " - " + this.Category.Name +" (" + this.Manufacturer.Name + ") Цена: "  + Price.ToString() + " руб.";
             }
         }
 

@@ -56,12 +56,27 @@ namespace Skladtrade
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
+            List<Product> theProducts = new List<Product>();
+            foreach (var order in Order.GetAll().Where(x => x.OrderStatus.ID == 5 || x.OrderStatus.ID == 8))
+            {
+                foreach (var item in order.OrderProducts)
+                {
+                    for (int i = 0; i < item.Count; i++)
+                    {
+                        theProducts.Add(item.Product);
+                    }
+
+                }
+            }
+
+
+
             if (this.radioButtonSearchCategory.Checked)
             {
                 Category theCategory = this.comboBoxCategory.SelectedItem as Category;
-                List<Product> theProducts = Product.GetAll();
+                
 
-                foreach (var item in Product.GetAll().Where(x => x.Category.ID == theCategory.ID))
+                foreach (var item in theProducts.Where(x => x.Category.ID == theCategory.ID))
                 {
                     this.listBoxSearchResult.Items.Add(item.created_at.ToString() + " " + item.Name);
                 }
@@ -72,25 +87,16 @@ namespace Skladtrade
             {
                 Manufacturer theManufacturer = this.comboBoxManufacturer.SelectedItem as Manufacturer;
 
-                foreach (var item in Product.GetAll().Where(x => x.Manufacturer.ID == theManufacturer.ID))
+                foreach (var item in theProducts.Where(x => x.Manufacturer.ID == theManufacturer.ID))
                 {
                     this.listBoxSearchResult.Items.Add(item.created_at.ToString() + " " + item.Name);
                 }
 
-                foreach (var item in Order.GetAll().Where(x => x.Manufacturer.ID == theManufacturer.ID))
-                {
-                    this.listBoxSearchResult.Items.Add(item.created_at.ToString() + " Заказ №  " + item.Number);
-                }
-
-                foreach (var item in Sale.GetAll().Where(x=>x.Manufacturer  != null).Where(x => x.Manufacturer.ID == theManufacturer.ID  ))
-                {
-                    this.listBoxSearchResult.Items.Add(item.created_at.ToString() + " Продажа №  " + item.Number);
-                }
             }
 
             if (this.radioButtonSearchPrice.Checked)
             {
-                foreach (var item in Product.GetAll().Where(x => x.Price < 250))
+                foreach (var item in theProducts.Where(x => x.Price < 250))
                 {
                     this.listBoxSearchResult.Items.Add(item.created_at.ToString() + " " + item.Name);
                 }
@@ -98,7 +104,7 @@ namespace Skladtrade
 
             if (this.radioButton1.Checked)
             {
-                foreach (var item in Product.GetAll().Where(x => x.Price > 250 && x.Price < 500))
+                foreach (var item in theProducts.Where(x => x.Price > 250 && x.Price < 500))
                 {
                     this.listBoxSearchResult.Items.Add(item.created_at.ToString() + " " + item.Name);
                 }
@@ -106,7 +112,7 @@ namespace Skladtrade
 
             if (this.radioButtonSearchPrice.Checked)
             {
-                foreach (var item in Product.GetAll().Where(x => x.Price > 500))
+                foreach (var item in theProducts.Where(x => x.Price > 500))
                 {
                     this.listBoxSearchResult.Items.Add(item.created_at.ToString() + " " + item.Name);
                 }

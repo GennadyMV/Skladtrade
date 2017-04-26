@@ -11,7 +11,7 @@
 
     <property name="Count"/>
 
-    <many-to-one name="Product" not-null="true" column="Product_ID"/>
+    <many-to-one name="Product" not-null="true" column="Product_ID" lazy="false"/>
     <!--<many-to-one name="Order" not-null="true" column="Order_ID"/>-->
     
   </class>

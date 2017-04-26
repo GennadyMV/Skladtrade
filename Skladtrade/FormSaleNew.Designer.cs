@@ -77,11 +77,16 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Цена за ед:";
+            this.label2.Text = "Итого (руб):";
             // 
             // numericUpDownPrice
             // 
             this.numericUpDownPrice.Location = new System.Drawing.Point(84, 102);
+            this.numericUpDownPrice.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.numericUpDownPrice.Name = "numericUpDownPrice";
             this.numericUpDownPrice.Size = new System.Drawing.Size(131, 20);
             this.numericUpDownPrice.TabIndex = 3;
@@ -98,9 +103,25 @@
             // numericUpDownCount
             // 
             this.numericUpDownCount.Location = new System.Drawing.Point(84, 128);
+            this.numericUpDownCount.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numericUpDownCount.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownCount.Name = "numericUpDownCount";
             this.numericUpDownCount.Size = new System.Drawing.Size(131, 20);
             this.numericUpDownCount.TabIndex = 3;
+            this.numericUpDownCount.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownCount.ValueChanged += new System.EventHandler(this.numericUpDownCount_ValueChanged);
             // 
             // label4
             // 
@@ -134,6 +155,7 @@
             this.comboBoxProduct.Name = "comboBoxProduct";
             this.comboBoxProduct.Size = new System.Drawing.Size(161, 21);
             this.comboBoxProduct.TabIndex = 4;
+            this.comboBoxProduct.SelectedIndexChanged += new System.EventHandler(this.comboBoxProduct_SelectedIndexChanged);
             // 
             // buttonSave
             // 

@@ -34,9 +34,9 @@ namespace Skladtrade
             try
             {
                 this.listViewSale.Items.Clear();
-                foreach (var order in Sale.GetAll())
+                foreach (var sale in Sale.GetAll())
                 {
-                    this.listViewSale.Items.Add("Продажа № " + order.Number + " ");
+                    this.listViewSale.Items.Add(sale.Name);
                 }
 
             }
