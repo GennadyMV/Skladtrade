@@ -32,7 +32,6 @@
             this.buttonOrders = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.buttonUpload = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonProducts
@@ -75,23 +74,12 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
-            // buttonUpload
-            // 
-            this.buttonUpload.Location = new System.Drawing.Point(47, 295);
-            this.buttonUpload.Name = "buttonUpload";
-            this.buttonUpload.Size = new System.Drawing.Size(108, 63);
-            this.buttonUpload.TabIndex = 0;
-            this.buttonUpload.Text = "Выгрузить";
-            this.buttonUpload.UseVisualStyleBackColor = true;
-            this.buttonUpload.Click += new System.EventHandler(this.buttonUoload_Click);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(407, 401);
+            this.ClientSize = new System.Drawing.Size(407, 298);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.buttonUpload);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.buttonOrders);
             this.Controls.Add(this.buttonProducts);
@@ -108,7 +96,6 @@
         private System.Windows.Forms.Button buttonOrders;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button buttonUpload;
     }
 }
 

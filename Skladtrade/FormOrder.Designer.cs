@@ -30,7 +30,7 @@
         {
             this.buttonOrderNew = new System.Windows.Forms.Button();
             this.listBoxOrders = new System.Windows.Forms.ListBox();
-            this.buttonOrderDelivery = new System.Windows.Forms.Button();
+            this.buttonOrderEdit = new System.Windows.Forms.Button();
             this.buttonOrderClose = new System.Windows.Forms.Button();
             this.buttonStore = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -50,18 +50,18 @@
             this.listBoxOrders.FormattingEnabled = true;
             this.listBoxOrders.Location = new System.Drawing.Point(12, 41);
             this.listBoxOrders.Name = "listBoxOrders";
-            this.listBoxOrders.Size = new System.Drawing.Size(362, 303);
+            this.listBoxOrders.Size = new System.Drawing.Size(969, 303);
             this.listBoxOrders.TabIndex = 1;
             // 
-            // buttonOrderDelivery
+            // buttonOrderEdit
             // 
-            this.buttonOrderDelivery.Location = new System.Drawing.Point(112, 12);
-            this.buttonOrderDelivery.Name = "buttonOrderDelivery";
-            this.buttonOrderDelivery.Size = new System.Drawing.Size(75, 23);
-            this.buttonOrderDelivery.TabIndex = 2;
-            this.buttonOrderDelivery.Text = "Получен";
-            this.buttonOrderDelivery.UseVisualStyleBackColor = true;
-            this.buttonOrderDelivery.Click += new System.EventHandler(this.buttonOrderDelivery_Click);
+            this.buttonOrderEdit.Location = new System.Drawing.Point(112, 12);
+            this.buttonOrderEdit.Name = "buttonOrderEdit";
+            this.buttonOrderEdit.Size = new System.Drawing.Size(75, 23);
+            this.buttonOrderEdit.TabIndex = 2;
+            this.buttonOrderEdit.Text = "Изменить";
+            this.buttonOrderEdit.UseVisualStyleBackColor = true;
+            this.buttonOrderEdit.Click += new System.EventHandler(this.buttonOrderEdit_Click);
             // 
             // buttonOrderClose
             // 
@@ -75,7 +75,7 @@
             // 
             // buttonStore
             // 
-            this.buttonStore.Location = new System.Drawing.Point(299, 12);
+            this.buttonStore.Location = new System.Drawing.Point(477, 12);
             this.buttonStore.Name = "buttonStore";
             this.buttonStore.Size = new System.Drawing.Size(75, 23);
             this.buttonStore.TabIndex = 4;
@@ -87,10 +87,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(386, 357);
+            this.ClientSize = new System.Drawing.Size(993, 357);
             this.Controls.Add(this.buttonStore);
             this.Controls.Add(this.buttonOrderClose);
-            this.Controls.Add(this.buttonOrderDelivery);
+            this.Controls.Add(this.buttonOrderEdit);
             this.Controls.Add(this.listBoxOrders);
             this.Controls.Add(this.buttonOrderNew);
             this.Name = "FormOrder";
@@ -104,7 +104,7 @@
 
         private System.Windows.Forms.Button buttonOrderNew;
         private System.Windows.Forms.ListBox listBoxOrders;
-        private System.Windows.Forms.Button buttonOrderDelivery;
+        private System.Windows.Forms.Button buttonOrderEdit;
         private System.Windows.Forms.Button buttonOrderClose;
         private System.Windows.Forms.Button buttonStore;
     }

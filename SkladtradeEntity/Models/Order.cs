@@ -23,7 +23,7 @@ namespace SkladtradeEntity.Models
         {
             get
             {
-                return "Заказ № " + this.ID.ToString("0000") + " # " + this.Number + " " + "на сумму: " + this.OrderProducts.Sum(x=>x.Product.Price) + " руб. Статус: " + this.OrderStatus.Name;
+                return this.updated_at.ToString() + " Заказ № " + this.ID.ToString("0000") + " # " + this.Number + " " + "на сумму: " + this.OrderProducts.Sum(x=>x.Product.Price) + " руб. Статус: " + this.OrderStatus.Name + " Производитель: " + this.Manufacturer.Name;
             }
         }
 

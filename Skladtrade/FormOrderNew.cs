@@ -46,6 +46,10 @@ namespace Skladtrade
 
         private void FormOrderNew_Load(object sender, EventArgs e)
         {
+            if (this.theOrder.ID > 0)
+            {
+                this.textBoxNumber.Text = theOrder.Number;
+            }
             LoadOrderProducts();
             LoadManufacturer();
             LoadStatus();

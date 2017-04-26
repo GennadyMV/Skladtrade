@@ -81,6 +81,7 @@
             // 
             // numericUpDownPrice
             // 
+            this.numericUpDownPrice.DecimalPlaces = 2;
             this.numericUpDownPrice.Location = new System.Drawing.Point(84, 102);
             this.numericUpDownPrice.Maximum = new decimal(new int[] {
             1000000,
