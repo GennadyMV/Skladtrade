@@ -37,8 +37,19 @@ namespace Skladtrade
                 this.textBoxCode.Text = theProduct.Code;                
                 this.textBoxPrice.Text = theProduct.Price.ToString();
                 this.textBoxDescription.Text = theProduct.Description;
-                //this.comboBoxCategory.SelectedValue = theProduct.Category;
+
+                foreach (var item in this.comboBoxCategory.Items)
+                {
+                    if (((Category)item).ID == theProduct.Category.ID)
+                    {
+                        this.comboBoxCategory.SelectedItem = item;
+                    }
+                }
+
+                
             }
+
+            LoadCharacteristic();
         }
 
         private void LoadCategory()
@@ -54,6 +65,11 @@ namespace Skladtrade
                 this.comboBoxCategory.DataSource = null;
                 this.comboBoxCategory.Items.Add(ex.Message);
             }
+        }
+
+        private void LoadCharacteristic()
+        {
+            Helper.Load.LoadCharacteristic(this.comboBoxCategory, this.checkedListBoxCharacteristic, this.theProduct);
         }
 
         private void LoadManufacturer()
@@ -90,6 +106,14 @@ namespace Skladtrade
                 theProduct.Price = Convert.ToDecimal(this.textBoxPrice.Text);
                 theProduct.Description = this.textBoxDescription.Text;
 
+                theProduct.ClearCharacteristics();
+
+                foreach(var item in this.checkedListBoxCharacteristic.CheckedItems)
+                {
+                    Characteristic model = ((ListViewItem)item).Tag as Characteristic;
+                    this.theProduct.Characteristics.Add(model);
+                }
+
                 if (theProduct.ID > 0)
                 {
                     theProduct.Update();
@@ -114,6 +138,19 @@ namespace Skladtrade
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void buttonCharacteristicAdd_Click(object sender, EventArgs e)
+        {
+            Category theCategory = this.comboBoxCategory.SelectedItem as Category;
+            FormCharacteristicNew theFormCharacteristicNew = new FormCharacteristicNew(theCategory);
+            theFormCharacteristicNew.ShowDialog();
+            LoadCharacteristic();
+        }
+
+        private void comboBoxCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadCharacteristic();
         }
     }
 }

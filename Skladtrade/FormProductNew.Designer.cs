@@ -44,6 +44,9 @@
             this.buttonMonufacturerAdd = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.checkedListBoxCharacteristic = new System.Windows.Forms.CheckedListBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.buttonCharacteristicAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBalance)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,7 +80,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(42, 179);
+            this.label4.Location = new System.Drawing.Point(26, 388);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 13);
             this.label4.TabIndex = 1;
@@ -105,7 +108,7 @@
             // 
             this.textBoxCode.Location = new System.Drawing.Point(120, 10);
             this.textBoxCode.Name = "textBoxCode";
-            this.textBoxCode.Size = new System.Drawing.Size(152, 20);
+            this.textBoxCode.Size = new System.Drawing.Size(320, 20);
             this.textBoxCode.TabIndex = 2;
             // 
             // comboBoxCategory
@@ -113,15 +116,16 @@
             this.comboBoxCategory.FormattingEnabled = true;
             this.comboBoxCategory.Location = new System.Drawing.Point(120, 39);
             this.comboBoxCategory.Name = "comboBoxCategory";
-            this.comboBoxCategory.Size = new System.Drawing.Size(152, 21);
+            this.comboBoxCategory.Size = new System.Drawing.Size(320, 21);
             this.comboBoxCategory.TabIndex = 3;
+            this.comboBoxCategory.SelectedIndexChanged += new System.EventHandler(this.comboBoxCategory_SelectedIndexChanged);
             // 
             // comboBoxManufacturer
             // 
             this.comboBoxManufacturer.FormattingEnabled = true;
             this.comboBoxManufacturer.Location = new System.Drawing.Point(120, 71);
             this.comboBoxManufacturer.Name = "comboBoxManufacturer";
-            this.comboBoxManufacturer.Size = new System.Drawing.Size(152, 21);
+            this.comboBoxManufacturer.Size = new System.Drawing.Size(320, 21);
             this.comboBoxManufacturer.TabIndex = 3;
             // 
             // textBoxPrice
@@ -140,15 +144,15 @@
             // 
             // textBoxDescription
             // 
-            this.textBoxDescription.Location = new System.Drawing.Point(120, 176);
+            this.textBoxDescription.Location = new System.Drawing.Point(120, 385);
             this.textBoxDescription.Multiline = true;
             this.textBoxDescription.Name = "textBoxDescription";
-            this.textBoxDescription.Size = new System.Drawing.Size(152, 88);
+            this.textBoxDescription.Size = new System.Drawing.Size(320, 88);
             this.textBoxDescription.TabIndex = 5;
             // 
             // buttonCategoryAdd
             // 
-            this.buttonCategoryAdd.Location = new System.Drawing.Point(278, 37);
+            this.buttonCategoryAdd.Location = new System.Drawing.Point(448, 37);
             this.buttonCategoryAdd.Name = "buttonCategoryAdd";
             this.buttonCategoryAdd.Size = new System.Drawing.Size(25, 23);
             this.buttonCategoryAdd.TabIndex = 6;
@@ -158,7 +162,7 @@
             // 
             // buttonMonufacturerAdd
             // 
-            this.buttonMonufacturerAdd.Location = new System.Drawing.Point(278, 69);
+            this.buttonMonufacturerAdd.Location = new System.Drawing.Point(448, 69);
             this.buttonMonufacturerAdd.Name = "buttonMonufacturerAdd";
             this.buttonMonufacturerAdd.Size = new System.Drawing.Size(25, 23);
             this.buttonMonufacturerAdd.TabIndex = 6;
@@ -168,9 +172,9 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(120, 287);
+            this.buttonSave.Location = new System.Drawing.Point(104, 496);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(75, 23);
+            this.buttonSave.Size = new System.Drawing.Size(114, 23);
             this.buttonSave.TabIndex = 7;
             this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -178,21 +182,51 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(278, 287);
+            this.buttonCancel.Location = new System.Drawing.Point(262, 496);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.Size = new System.Drawing.Size(114, 23);
             this.buttonCancel.TabIndex = 8;
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
+            // checkedListBoxCharacteristic
+            // 
+            this.checkedListBoxCharacteristic.CheckOnClick = true;
+            this.checkedListBoxCharacteristic.FormattingEnabled = true;
+            this.checkedListBoxCharacteristic.Location = new System.Drawing.Point(120, 198);
+            this.checkedListBoxCharacteristic.Name = "checkedListBoxCharacteristic";
+            this.checkedListBoxCharacteristic.Size = new System.Drawing.Size(320, 169);
+            this.checkedListBoxCharacteristic.TabIndex = 9;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(9, 198);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(93, 13);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Характеристики:";
+            // 
+            // buttonCharacteristicAdd
+            // 
+            this.buttonCharacteristicAdd.Location = new System.Drawing.Point(448, 198);
+            this.buttonCharacteristicAdd.Name = "buttonCharacteristicAdd";
+            this.buttonCharacteristicAdd.Size = new System.Drawing.Size(25, 23);
+            this.buttonCharacteristicAdd.TabIndex = 6;
+            this.buttonCharacteristicAdd.Text = "+";
+            this.buttonCharacteristicAdd.UseVisualStyleBackColor = true;
+            this.buttonCharacteristicAdd.Click += new System.EventHandler(this.buttonCharacteristicAdd_Click);
+            // 
             // FormProductNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(367, 344);
+            this.ClientSize = new System.Drawing.Size(654, 531);
+            this.Controls.Add(this.checkedListBoxCharacteristic);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
+            this.Controls.Add(this.buttonCharacteristicAdd);
             this.Controls.Add(this.buttonMonufacturerAdd);
             this.Controls.Add(this.buttonCategoryAdd);
             this.Controls.Add(this.textBoxDescription);
@@ -203,6 +237,7 @@
             this.Controls.Add(this.textBoxCode);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -234,5 +269,8 @@
         private System.Windows.Forms.Button buttonMonufacturerAdd;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.CheckedListBox checkedListBoxCharacteristic;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button buttonCharacteristicAdd;
     }
 }

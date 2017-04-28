@@ -26,14 +26,16 @@ namespace Skladtrade
 
         private void Main_Load(object sender, EventArgs e)
         {
-            if (!File.Exists("nhlite.db"))
-            {
-                Entity.Common.NHibernateHelper.UpdateSchema();
-            }
-            if (DateTime.Now > new DateTime(2017, 5, 1))
-            {
-                this.Close();
-            }
+            Entity.Common.NHibernateHelper.UpdateSchema();
+
+            //if (!File.Exists("nhlite.db"))
+            //{
+            //    Entity.Common.NHibernateHelper.UpdateSchema();
+            //}
+            //if (DateTime.Now > new DateTime(2017, 5, 1))
+            //{
+            //    this.Close();
+            //}
         }
 
         private void buttonOrders_Click(object sender, EventArgs e)

@@ -13,7 +13,7 @@
     <property name="Document"/>
     
     <many-to-one name="OrderStatus" not-null="true" column="OrderStatus_ID" lazy="false"/>
-    <many-to-one name="Manufacturer" not-null="true" column="Manufacturer_ID"/>
+    <many-to-one name="Manufacturer" not-null="true" column="Manufacturer_ID" lazy="false"/>
 
     <set name="OrderProducts" cascade="all" lazy="false">
       <key column="Order_ID"/>

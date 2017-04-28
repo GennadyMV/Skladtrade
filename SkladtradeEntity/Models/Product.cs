@@ -17,6 +17,8 @@ namespace SkladtradeEntity.Models
 
         public virtual Manufacturer Manufacturer {get; set;}
 
+        public virtual Type Type { get; set; }
+
         public virtual string Description { get; set; }
 
         public virtual Decimal Price { get; set; }
@@ -54,7 +56,7 @@ namespace SkladtradeEntity.Models
             this.Characteristics.Clear();
         }
 
-        public virtual Boolean IsExistConsumer(int CharacteristicID)
+        public virtual Boolean IsExistCharacteristic(int CharacteristicID)
         {
             foreach (var theCharacteristic in this.Characteristics)
             {

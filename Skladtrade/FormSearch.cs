@@ -22,6 +22,7 @@ namespace Skladtrade
         {
             LoadCategory();
             LoadManufacturer();
+            Helper.Load.LoadCharacteristic(this.comboBoxCategory, this.checkedListBoxCharacteristic, null);
         }
 
         private void LoadManufacturer()
@@ -56,66 +57,112 @@ namespace Skladtrade
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            List<Product> theProducts = new List<Product>();
+            List<Product> theProductAll = new List<Product>();
             foreach (var order in Order.GetAll().Where(x => x.OrderStatus.ID == 5 || x.OrderStatus.ID == 8))
             {
                 foreach (var item in order.OrderProducts)
                 {
                     for (int i = 0; i < item.Count; i++)
                     {
-                        theProducts.Add(item.Product);
+                        theProductAll.Add(item.Product);
                     }
 
                 }
             }
 
+            var result = theProductAll.Where(x => x.ID > 0);
+
+            
+
+            List<Product> theProductResult = new List<Product>();
 
 
-            if (this.radioButtonSearchCategory.Checked)
+            if (this.checkBoxCategory.Checked)
             {
                 Category theCategory = this.comboBoxCategory.SelectedItem as Category;
-                
 
-                foreach (var item in theProducts.Where(x => x.Category.ID == theCategory.ID))
+                result = result.Where(x => x.Category.ID == theCategory.ID);
+
+                foreach (var item in theProductAll.Where(x => x.Category.ID == theCategory.ID))
                 {
-                    this.listBoxSearchResult.Items.Add(item.created_at.ToString() + " " + item.Name);
+                    theProductResult.Add(item);
                 }
 
             }
 
-            if (this.radioButtonSearchManufacturer.Checked)
+            if (this.checkBoxManufacturer.Checked)
             {
                 Manufacturer theManufacturer = this.comboBoxManufacturer.SelectedItem as Manufacturer;
 
-                foreach (var item in theProducts.Where(x => x.Manufacturer.ID == theManufacturer.ID))
+                result = result.Where(x => x.Manufacturer.ID == theManufacturer.ID);
+
+                foreach (var item in theProductAll.Where(x => x.Manufacturer.ID == theManufacturer.ID))
                 {
-                    this.listBoxSearchResult.Items.Add(item.created_at.ToString() + " " + item.Name);
+                    theProductResult.Add(item);
                 }
 
             }
 
-            if (this.radioButtonSearchPrice.Checked)
+            if (this.checkBoxCharacteristic.Checked)
             {
-                foreach (var item in theProducts.Where(x => x.Price < 250))
+                foreach (var item in this.checkedListBoxCharacteristic.CheckedItems)
                 {
-                    this.listBoxSearchResult.Items.Add(item.created_at.ToString() + " " + item.Name);
+                    Characteristic theCharacteristic = ((ListViewItem)item).Tag as Characteristic;
+
+                    result = result.Where(x => x.IsExistCharacteristic(theCharacteristic.ID) == true);
+
                 }
             }
 
-            if (this.radioButton1.Checked)
+            if (this.checkBoxPrice0.Checked)
             {
-                foreach (var item in theProducts.Where(x => x.Price > 250 && x.Price < 500))
+                result = result.Where(x => x.Price < 250);
+                foreach (var item in theProductAll.Where(x => x.Price < 250))
                 {
-                    this.listBoxSearchResult.Items.Add(item.created_at.ToString() + " " + item.Name);
+                    theProductResult.Add(item);
                 }
             }
 
-            if (this.radioButtonSearchPrice.Checked)
+            if (this.checkBoxPrice250.Checked)
             {
-                foreach (var item in theProducts.Where(x => x.Price > 500))
+                result = result.Where(x => x.Price > 250 && x.Price < 500);
+                foreach (var item in theProductAll.Where(x => x.Price > 250 && x.Price < 500))
                 {
-                    this.listBoxSearchResult.Items.Add(item.created_at.ToString() + " " + item.Name);
+                    theProductResult.Add(item);
                 }
+            }
+
+            if (this.checkBoxPrice500.Checked)
+            {
+                result = result.Where(x => x.Price > 500);
+                foreach (var item in theProductAll.Where(x => x.Price > 500))
+                {
+                    theProductResult.Add(item);
+                }
+            }
+
+
+            this.listBoxSearchResult.Items.Clear();
+            foreach (var item in result.GroupBy(x => x).Select(g => new { Text = g.Key, Count = g.Count() }))
+            {
+                this.listBoxSearchResult.Items.Add(item.Text.Name + " Остаток на складе: " + item.Count + " шт. Общая стоимость: " + item.Text.Price * item.Count + " руб.");
+            }
+        }
+
+        private void comboBoxCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Helper.Load.LoadCharacteristic(this.comboBoxCategory, this.checkedListBoxCharacteristic, null);
+        }
+
+        private void checkedListBoxCharacteristic_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.checkedListBoxCharacteristic.CheckedItems.Count > 0)
+            {
+                this.checkBoxCharacteristic.Checked = true;
+            }
+            else
+            {
+                this.checkBoxCharacteristic.Checked = false;
             }
         }
     }
